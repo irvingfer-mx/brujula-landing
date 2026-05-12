@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brújula Inteligente – La decisión más importante de tu vida profesional, tomada con inteligencia.</title>
+  <meta name="description" content="El desarrollo profesional adecuado no se adivina. Se descubre. 11 instrumentos científicos que analizan quién eres y dónde vas a destacar. Ciudad de México."/>
+  <meta property="og:title" content="Brújula Inteligente – La decisión más importante de tu vida profesional, tomada con inteligencia."/>
+  <meta property="og:description" content="Elige tu futuro profesional con inteligencia. No con suerte. Una sola evaluación. Claridad para los próximos 5 años."/>
+  <meta property="og:url" content="https://brujulainteligente.com"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>"/>
+
+  <!-- ─── Google Analytics 4 ───────────────────────────────────────── -->
+  <!-- TODO: Reemplazar G-DTN7L2HYHS por tu Measurement ID real de GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DTN7L2HYHS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DTN7L2HYHS', {
+      send_page_view: true,
+      anonymize_ip: true
+    });
+
+    // Helper global para trackear eventos desde cualquier botón inline
+    window.trackEvent = function(name, params){
+      try { gtag('event', name, params || {}); }
+      catch(e){ console.warn('[trackEvent]', e.message); }
+    };
+  </script>
+  <!-- ────────────────────────────────────────────────────────────── -->
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --navy:#1B3A5C; --blue:#2E86C1; --gold:#D4A846; --green:#27AE60; }
+    html { scroll-behavior:smooth; }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; margin:0; background:#fff; }
+
+    /* ── Animations ── */
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes gradShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+    @keyframes pulseBorder { 0%,100%{box-shadow:0 0 0 0 rgba(212,168,70,.5)} 60%{box-shadow:0 0 0 14px rgba(212,168,70,0)} }
+    @keyframes countUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+    .animate-float { animation:float 4s ease-in-out infinite; }
+    .animate-fadeUp { animation:fadeUp .7s ease both; }
+    .animate-fadeUp-d1 { animation:fadeUp .7s ease .1s both; }
+    .animate-fadeUp-d2 { animation:fadeUp .7s ease .2s both; }
+    .animate-fadeUp-d3 { animation:fadeUp .7s ease .3s both; }
+
+    /* ── Hero ── */
+    .hero-bg {
+      background: linear-gradient(135deg,#0d2137 0%,#1B3A5C 45%,#1e5f8e 100%);
+      background-size:200% 200%;
+      animation:gradShift 10s ease infinite;
+    }
+    .hero-compass {
+      font-size:90px; line-height:1;
+      animation:float 4s ease-in-out infinite;
+      filter:drop-shadow(0 12px 32px rgba(212,168,70,.35));
+    }
+    .gold-text { color:#D4A846; }
+    .gradient-text {
+      background:linear-gradient(90deg,#D4A846,#f0c96e,#D4A846);
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+      background-size:200%; animation:gradShift 3s ease infinite;
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      background:linear-gradient(135deg,#2E86C1,#D4A846);
+      color:#fff; font-weight:800; border-radius:16px;
+      padding:16px 32px; font-size:16px; text-decoration:none;
+      display:inline-block; transition:transform .2s,opacity .2s,box-shadow .2s;
+      box-shadow:0 4px 20px rgba(46,134,193,.4);
+    }
+    .btn-primary:hover { transform:translateY(-2px); opacity:.92; box-shadow:0 8px 32px rgba(46,134,193,.5); }
+    .btn-wa {
+      background:#25D366; color:#fff; font-weight:800; border-radius:16px;
+      padding:16px 32px; font-size:16px; text-decoration:none;
+      display:inline-block; transition:transform .2s,background .2s;
+    }
+    .btn-wa:hover { background:#1ebc58; transform:translateY(-2px); }
+    .btn-pulse { animation:pulseBorder 2.5s ease-in-out infinite; }
+
+    /* ── Nav ── */
+    .sticky-nav {
+      position:sticky; top:0; z-index:100;
+      background:rgba(13,33,55,.96); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.07);
+    }
+
+    /* ── Cards ── */
+    .card-shadow { box-shadow:0 4px 24px rgba(0,0,0,.09); }
+    .card-hover { transition:transform .2s,box-shadow .2s; }
+    .card-hover:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.14); }
+
+    /* ── Launch Banner ── */
+    .launch-banner {
+      background:linear-gradient(90deg,#D4A846,#e8b84b,#D4A846);
+      background-size:200%; animation:gradShift 4s ease infinite;
+    }
+
+    /* ── Comparison table ── */
+    .compare-no { color:#E74C3C; }
+    .compare-yes { color:#27AE60; }
+
+    /* ── Testimonial ── */
+    .testimonial-stars { color:#D4A846; letter-spacing:2px; }
+
+    /* ── Price cards ── */
+    .price-card { border:2px solid #E5E7EB; border-radius:24px; background:#fff; transition:border-color .2s,box-shadow .2s,transform .2s; }
+    .price-card.featured { border-color:#2E86C1; box-shadow:0 12px 48px rgba(46,134,193,.18); transform:scale(1.02); }
+    .price-card:hover { border-color:#2E86C1; box-shadow:0 8px 32px rgba(46,134,193,.12); }
+
+    /* ── Calculator ── */
+    .calc-card { background:linear-gradient(135deg,#0d2137,#1B3A5C); border-radius:28px; padding:40px 32px; color:#fff; }
+    .calc-select {
+      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
+      color:#fff; border-radius:12px; padding:12px 16px; width:100%;
+      font-size:15px; appearance:none; outline:none;
+      transition:border-color .2s,background .2s;
+    }
+    .calc-select:focus { border-color:#D4A846; background:rgba(255,255,255,.15); }
+    .calc-select option { background:#1B3A5C; color:#fff; }
+    .calc-result { min-height:100px; transition:all .4s; }
+
+    /* ── Guarantee ── */
+    .guarantee-box {
+      background:linear-gradient(135deg,rgba(39,174,96,.08),rgba(39,174,96,.04));
+      border:2px solid rgba(39,174,96,.25); border-radius:20px;
+    }
+
+    /* ── Floating WA ── */
+    #wa-float {
+      position:fixed; bottom:84px; right:20px; z-index:999;
+      background:#25D366; color:#fff; border-radius:50%;
+      width:56px; height:56px; display:flex; align-items:center; justify-content:center;
+      box-shadow:0 4px 20px rgba(37,211,102,.5);
+      text-decoration:none; transition:transform .2s,box-shadow .2s;
+    }
+    #wa-float:hover { transform:scale(1.1); }
+
+    /* ── Mobile sticky bar ── */
+    #mobile-bar {
+      position:fixed; bottom:0; left:0; right:0; z-index:98;
+      background:rgba(13,33,55,.98); backdrop-filter:blur(10px);
+      border-top:1px solid rgba(255,255,255,.1);
+      padding:12px 16px; display:none;
+      grid-template-columns:1fr 1fr; gap:10px;
+    }
+    @media(max-width:640px){ #mobile-bar{ display:grid; } }
+    .mob-btn { border-radius:12px; font-weight:800; font-size:14px; text-align:center; padding:13px 8px; text-decoration:none; display:block; }
+
+    /* ── Step num ── */
+    .step-num {
+      width:48px; height:48px; border-radius:50%;
+      background:linear-gradient(135deg,#2E86C1,#1B3A5C);
+      color:#fff; display:flex; align-items:center; justify-content:center;
+      font-weight:900; font-size:20px; flex-shrink:0;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width:6px; }
+    ::-webkit-scrollbar-track { background:#f1f1f1; }
+    ::-webkit-scrollbar-thumb { background:#2E86C1; border-radius:3px; }
+  </style>
+</head>
+<body>
+
+<!-- ── LAUNCH BANNER ── -->
+<div class="launch-banner text-center py-2.5 px-4">
+  <p class="text-sm font-bold text-white">
+    🚀 Lanzamiento CDMX — Quedan <span id="spots-left">18</span> lugares con precio de inauguración
+    <a href="https://wa.me/5560983059?text=Quiero+uno+de+los+lugares+de+lanzamiento" target="_blank"
+      class="ml-2 underline text-white font-extrabold">Reservar lugar →</a>
+  </p>
+</div>
+
+<!-- ── NAV ── -->
+<nav class="sticky-nav">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="text-xl">🧭</span>
+      <div>
+        <span class="font-extrabold text-white text-base leading-tight block">Brújula Inteligente</span>
+        <span class="text-xs hidden sm:block" style="color:#D4A846;">La decisión más importante de tu vida profesional, tomada con inteligencia.</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <a href="#como-funciona" class="text-white text-sm opacity-70 hover:opacity-100 hidden sm:block px-3 py-1">Cómo funciona</a>
+      <a href="#precios" class="text-white text-sm opacity-70 hover:opacity-100 hidden sm:block px-3 py-1">Precios</a>
+      <a href="https://wa.me/5560983059?text=Quiero+agendar+mi+evaluaci%C3%B3n+de+Br%C3%BAjula+Inteligente" target="_blank"
+        class="btn-primary btn-pulse !py-2 !px-4 !text-sm !rounded-xl">Agendar sesión</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero-bg py-16 sm:py-24 px-4">
+  <div class="max-w-4xl mx-auto text-center">
+    <div class="hero-compass mb-6">🧭</div>
+
+    <p class="animate-fadeUp text-xs sm:text-sm font-bold tracking-widest uppercase mb-4" style="color:#D4A846;">
+      Elige tu futuro profesional con inteligencia. No con suerte.
+    </p>
+
+    <h1 class="animate-fadeUp-d1 text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+      La decisión más importante<br/>
+      <span class="gradient-text">de tu vida profesional,</span><br/>
+      tomada con inteligencia.
+    </h1>
+
+    <p class="animate-fadeUp-d2 text-lg sm:text-xl text-white leading-relaxed mb-4 max-w-2xl mx-auto" style="opacity:.85;">
+      El mejor apoyo no es pagarles la carrera.<br class="hidden sm:block"/>
+      Es apoyarlos en <strong class="text-white">decidir la correcta.</strong>
+    </p>
+
+    <p class="animate-fadeUp-d2 text-base text-white mb-6 max-w-xl mx-auto" style="opacity:.70;">
+      11 instrumentos científicos que analizan gustos, habilidades y motivaciones. Reporte personalizado + sesión de interpretación profesional. <strong class="text-white opacity-100">Una sola sesión. Claridad para los próximos 5 años.</strong>
+    </p>
+
+    <!-- Mensaje resiliencia -->
+    <div class="animate-fadeUp-d2 max-w-2xl mx-auto mb-10 rounded-2xl px-6 py-4 text-left" style="background:rgba(255,255,255,0.07);border-left:3px solid #D4A846;">
+      <p class="text-white text-sm leading-relaxed" style="opacity:.85;">
+        Las carreras y profesiones están cambiando constantemente a nivel nacional y mundial. Nadie puede predecir con exactitud qué trabajos existirán en 10 años.
+      </p>
+      <p class="text-sm font-bold mt-2" style="color:#D4A846;">
+        Lo que sí podemos hacer es ubicarte hoy donde tienes tus mayores habilidades. Porque quien opera desde sus fortalezas no le teme al cambio. Se adapta. Destaca. Permanece.
+      </p>
+    </div>
+
+    <div class="animate-fadeUp-d3 flex flex-col sm:flex-row gap-4 justify-center mb-12">
+      <a href="#precios" class="btn-primary btn-pulse text-lg !py-5 !px-10">▶️ Quiero tomar la decisión correcta</a>
+      <a href="https://wa.me/5560983059?text=Hola%2C+quiero+saber+m%C3%A1s+sobre+la+evaluaci%C3%B3n+vocacional" target="_blank"
+        class="btn-wa text-lg !py-5 !px-10">💬 Hablar con el consultor</a>
+    </div>
+
+    <div class="animate-fadeUp-d3 flex flex-wrap justify-center gap-3 sm:gap-6 text-white text-sm" style="opacity:.75;">
+      <span>🧠 Decisión inteligente, respaldada por ciencia</span>
+      <span>🎯 Tu perfil es único. Tu resultado también.</span>
+      <span>✅ Reporte PDF personalizado</span>
+      <span>✅ Presencial o videollamada</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST NUMBERS ── -->
+<section class="bg-white border-b py-8 px-4">
+  <div class="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+    <div><p class="text-4xl font-black" style="color:#1B3A5C;">11</p><p class="text-sm text-gray-500 mt-1">Instrumentos científicos</p></div>
+    <div><p class="text-4xl font-black" style="color:#2E86C1;">194</p><p class="text-sm text-gray-500 mt-1">Reactivos de precisión</p></div>
+    <div><p class="text-4xl font-black" style="color:#D4A846;">32</p><p class="text-sm text-gray-500 mt-1">Carreras + 10 rutas técnicas</p></div>
+    <div><p class="text-4xl font-black" style="color:#27AE60;">1</p><p class="text-sm text-gray-500 mt-1">Sesión para decidir</p></div>
+  </div>
+</section>
+
+<!-- ── TE IDENTIFICAS (pain points) ── -->
+<section class="py-16 px-4" style="background:#F8F9FA;">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-center mb-3" style="color:#1B3A5C;">¿Te suena familiar alguno de estos?</h2>
+    <p class="text-center text-gray-500 mb-10">Si marcas 2 o más, este servicio es para ti.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+        <p class="text-2xl mb-2">😰</p>
+        <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"No sé qué estudiar y ya es tarde"</p>
+        <p class="text-xs text-gray-500">La fecha límite de admisión se acerca y no hay una respuesta clara.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+        <p class="text-2xl mb-2">🤷</p>
+        <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"Me gustan muchas cosas pero no sé en cuál enfocarme"</p>
+        <p class="text-xs text-gray-500">Demasiadas opciones y todas parecen igual de buenas o de malas.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+        <p class="text-2xl mb-2">👨‍👩‍👧</p>
+        <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"Mi familia quiere una cosa y yo quiero otra"</p>
+        <p class="text-xs text-gray-500">La presión del entorno hace más difícil escuchar la voz propia.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+        <p class="text-2xl mb-2">💸</p>
+        <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"No quiero arriesgar años y dinero en la carrera equivocada"</p>
+        <p class="text-xs text-gray-500">Cambiar de carrera en 2° año puede costar $120k–$400k MXN y 2 años más.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+        <p class="text-2xl mb-2">🎭</p>
+        <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"Ya empecé una carrera pero no me convence"</p>
+        <p class="text-xs text-gray-500">Algo no encaja pero tampoco sabes si el problema eres tú o la carrera.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+        <p class="text-2xl mb-2">🔮</p>
+        <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"Quiero saber si de verdad tengo lo que se necesita"</p>
+        <p class="text-xs text-gray-500">Hay una carrera en mente pero falta la certeza de que es la correcta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SIN BRÚJULA vs CON BRÚJULA ── -->
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-center mb-3" style="color:#1B3A5C;">¿Qué cambia con Brújula Inteligente?</h2>
+    <p class="text-center text-gray-500 mb-10">La diferencia no es solo en la decisión — es en cómo se siente tomarla.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-0 rounded-2xl overflow-hidden card-shadow">
+      <!-- SIN -->
+      <div class="p-7" style="background:#FEF2F2;">
+        <p class="font-extrabold text-base mb-5 flex items-center gap-2" style="color:#E74C3C;">
+          ✗ Sin orientación profesional
+        </p>
+        <ul class="space-y-3 text-sm text-gray-600">
+          <li class="flex gap-2"><span class="compare-no font-bold">✗</span> Decides por intuición, presión o moda</li>
+          <li class="flex gap-2"><span class="compare-no font-bold">✗</span> Sin datos sobre tu perfil real</li>
+          <li class="flex gap-2"><span class="compare-no font-bold">✗</span> Incertidumbre durante toda la carrera</li>
+          <li class="flex gap-2"><span class="compare-no font-bold">✗</span> Alto riesgo de deserción o cambio</li>
+          <li class="flex gap-2"><span class="compare-no font-bold">✗</span> El fracaso se siente como algo personal</li>
+          <li class="flex gap-2"><span class="compare-no font-bold">✗</span> Años y dinero en una dirección equivocada</li>
+          <li class="flex gap-2"><span class="compare-no font-bold">✗</span> La decisión se pospone hasta el último momento</li>
+        </ul>
+      </div>
+      <!-- CON -->
+      <div class="p-7" style="background:#F0FDF4;">
+        <p class="font-extrabold text-base mb-5 flex items-center gap-2" style="color:#27AE60;">
+          ✓ Con Brújula Inteligente
+        </p>
+        <ul class="space-y-3 text-sm text-gray-600">
+          <li class="flex gap-2"><span class="compare-yes font-bold">✓</span> Decides con datos reales sobre tu perfil</li>
+          <li class="flex gap-2"><span class="compare-yes font-bold">✓</span> Entiendes tus intereses, habilidades y motivadores</li>
+          <li class="flex gap-2"><span class="compare-yes font-bold">✓</span> Claridad desde el primer semestre</li>
+          <li class="flex gap-2"><span class="compare-yes font-bold">✓</span> Menor riesgo de abandono o cambio</li>
+          <li class="flex gap-2"><span class="compare-yes font-bold">✓</span> Las dificultades se entienden y se manejan</li>
+          <li class="flex gap-2"><span class="compare-yes font-bold">✓</span> Inversión de $4,500–$6,500 MXN. Una sola vez.</li>
+          <li class="flex gap-2"><span class="compare-yes font-bold">✓</span> La decisión se toma con seguridad y con tiempo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CÓMO FUNCIONA ── -->
+<section id="como-funciona" class="py-16 px-4" style="background:#F8F9FA;">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-center mb-3" style="color:#1B3A5C;">Cómo funciona y qué entregamos</h2>
+    <p class="text-center text-gray-500 mb-10">Cuatro pasos. Un resultado que cambia la dirección de tu vida profesional.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover text-center">
+        <div class="step-num mx-auto mb-4">1</div>
+        <h3 class="font-bold text-base mb-2" style="color:#1B3A5C;">Haz el test online</h3>
+        <p class="text-gray-500 text-sm">Realiza un test 360° desde tu celular. Evaluamos intereses, habilidades, personalidad, motivadores y estilo de pensamiento.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover text-center relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="text-xs font-bold px-3 py-1 rounded-full text-white" style="background:#D4A846;">Automático</span>
+        </div>
+        <div class="step-num mx-auto mb-4">2</div>
+        <h3 class="font-bold text-base mb-2" style="color:#1B3A5C;">Recibe tu reporte PDF</h3>
+        <p class="text-gray-500 text-sm">Obtén un reporte personalizado con tus principales rutas vocacionales, carreras compatibles, fortalezas y perfil profesional.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover text-center">
+        <div class="step-num mx-auto mb-4">3</div>
+        <h3 class="font-bold text-base mb-2" style="color:#1B3A5C;">Ten una sesión de interpretación</h3>
+        <p class="text-gray-500 text-sm">Revisamos tus resultados contigo para identificar las carreras, ámbitos profesionales, opciones de emprendimiento u oficios donde puedes tener mayor afinidad y posibilidad de desarrollo.</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover text-center relative">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span class="text-xs font-bold px-3 py-1 rounded-full text-white" style="background:#27AE60;">Exclusivo</span>
+        </div>
+        <div class="step-num mx-auto mb-4">4</div>
+        <h3 class="font-bold text-base mb-2" style="color:#1B3A5C;">Recibe una guía de acción</h3>
+        <p class="text-gray-500 text-sm">Entregamos información práctica para padres, tutores o estudiantes: escuelas, ubicaciones, costos de referencia, requisitos, fechas y pasos sugeridos para avanzar hacia la inscripción.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 8 INSTRUMENTOS ── -->
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-center mb-3" style="color:#1B3A5C;">¿Qué mide la evaluación?</h2>
+    <p class="text-center text-gray-500 mb-10">11 instrumentos que se cruzan para darte una imagen completa y honesta de tu perfil.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">🎯</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">1. Inventario de Intereses</p><p class="text-xs text-gray-500 mt-0.5">Qué áreas temáticas te generan motivación real</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">💪</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">2. Habilidades Naturales</p><p class="text-xs text-gray-500 mt-0.5">En qué se te da bien por naturaleza</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">🧠</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">3. Personalidad Funcional</p><p class="text-xs text-gray-500 mt-0.5">Cómo eres en ambientes de trabajo y estudio</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">🔥</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">4. Motivadores Profundos</p><p class="text-xs text-gray-500 mt-0.5">Qué necesitas sentir para estar satisfecho</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">🎭</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">5. Roles y Tolerancias</p><p class="text-xs text-gray-500 mt-0.5">Cómo participas y qué condiciones toleras</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">⚡</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">6. Orientación Cognitiva</p><p class="text-xs text-gray-500 mt-0.5">Si piensas de forma práctica, analítica o creativa</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">📋</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">7. Hábitos y Disciplina</p><p class="text-xs text-gray-500 mt-0.5">Tu nivel real de constancia y organización</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">🌟</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">8. Expectativas de Vida</p><p class="text-xs text-gray-500 mt-0.5">Qué tipo de vida y trabajo quieres construir</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">🚀</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">9. Habilidades Future-Proof</p><p class="text-xs text-gray-500 mt-0.5">Qué tan preparado estás para el mercado laboral 2030</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF;">
+        <span class="text-2xl">🏡</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">10. Estilo de Vida Ideal</p><p class="text-xs text-gray-500 mt-0.5">Cómo quieres vivir tu vida profesional en 2030</p></div>
+      </div>
+      <div class="flex gap-3 p-4 rounded-2xl card-hover" style="background:#EFF6FF; grid-column: 1 / -1;">
+        <span class="text-2xl">🎯</span>
+        <div><p class="font-bold text-sm" style="color:#1B3A5C;">11. Nicho de Alto Desempeño</p><p class="text-xs text-gray-500 mt-0.5">El rol específico donde naturalmente vas a destacar más dentro de tu carrera ideal</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 🎁 CALCULADORA ROI (MEJORA SORPRESA PREMIUM) ── -->
+<section id="calculadora" class="py-16 px-4" style="background:#0d2137;">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-10">
+      <span class="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-4 inline-block" style="background:#D4A84622;color:#D4A846;">Herramienta exclusiva</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-3 mb-3">¿Cuánto cuesta equivocarse de carrera?</h2>
+      <p class="text-white text-sm" style="opacity:.70;">El costo real de elegir sin información. Solo 2 años pueden representar una pérdida enorme.</p>
+    </div>
+    <div class="calc-card">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+
+        <!-- Privada media -->
+        <div class="rounded-2xl p-6 text-center" style="background:rgba(255,255,255,.07);border:1px solid rgba(212,168,70,.3);">
+          <div class="text-3xl mb-3">🏛️</div>
+          <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#D4A846;">Universidad Privada Media</p>
+          <p class="text-4xl font-black text-white my-3">$216,000</p>
+          <p class="text-sm text-white" style="opacity:.7;">MXN estimados · 2 años perdidos</p>
+          <div class="mt-4 space-y-1 text-left text-xs" style="color:rgba(255,255,255,.6);">
+            <p>📚 Colegiaturas, cuotas e inscripciones</p>
+            <p>🚌 Transporte y gastos diarios</p>
+            <p>📖 Materiales y libros</p>
+            <p>⏱️ Tiempo que no vuelve</p>
+          </div>
+        </div>
+
+        <!-- Pública -->
+        <div class="rounded-2xl p-6 text-center" style="background:rgba(255,255,255,.07);border:1px solid rgba(46,134,193,.3);">
+          <div class="text-3xl mb-3">🎓</div>
+          <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#2E86C1;">Universidad Pública</p>
+          <p class="text-4xl font-black text-white my-3">$58k–$97k</p>
+          <p class="text-sm text-white" style="opacity:.7;">MXN estimados · 2 años perdidos</p>
+          <div class="mt-4 space-y-1 text-left text-xs" style="color:rgba(255,255,255,.6);">
+            <p>📚 Cuotas, materiales y trámites</p>
+            <p>🚌 Transporte y gastos diarios</p>
+            <p>📖 Recursos y herramientas</p>
+            <p>⏱️ Tiempo que no vuelve</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparativa Brújula -->
+      <div class="rounded-2xl p-5 text-center" style="background:rgba(212,168,70,.15);border:1px solid rgba(212,168,70,.4);">
+        <p class="text-white font-bold text-base mb-1">Brújula Inteligente cuesta <span style="color:#D4A846;">$4,499 MXN</span></p>
+        <p class="text-white text-sm" style="opacity:.8;">Una sola inversión que puede ahorrarte años y cientos de miles de pesos.</p>
+        <a href="#precios" class="inline-block mt-3 px-6 py-2 rounded-xl font-bold text-sm no-underline" style="background:#D4A846;color:#1B3A5C;">
+          Ver paquetes →
+        </a>
+      </div>
+
+      <p class="text-center mt-5 text-xs" style="color:rgba(255,255,255,.4);">
+        Estimaciones referenciales basadas en colegiaturas, cuotas, materiales, transporte, gastos asociados y tiempo invertido. Los costos pueden variar según la institución y la ciudad.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIOS ── -->
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-center mb-3" style="color:#1B3A5C;">Lo que dicen los primeros evaluados</h2>
+    <p class="text-center text-gray-500 mb-10">Resultados reales de estudiantes y familias que ya tomaron la decisión.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover">
+        <div class="testimonial-stars text-lg mb-3">★★★★★</div>
+        <p class="text-sm text-gray-600 italic mb-4">"Siempre pensé que quería estudiar Administración porque era 'segura'. Después de la evaluación descubrí que mi perfil encaja perfectamente con Psicología Organizacional. Ahora estoy en proceso de admisión para esa carrera y me siento emocionada."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background:#2E86C1;">SV</div>
+          <div><p class="font-bold text-sm" style="color:#1B3A5C;">Sofía V.</p><p class="text-xs text-gray-400">17 años · CDMX</p></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover">
+        <div class="testimonial-stars text-lg mb-3">★★★★★</div>
+        <p class="text-sm text-gray-600 italic mb-4">"Como papá, tenía mucho miedo de que mi hijo eligiera la carrera equivocada. El reporte nos dio argumentos reales para hablar en familia. Al final todos estuvimos de acuerdo — y lo más importante: mi hijo está convencido de su decisión."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background:#1B3A5C;">RG</div>
+          <div><p class="font-bold text-sm" style="color:#1B3A5C;">Roberto G.</p><p class="text-xs text-gray-400">Padre de familia · CDMX</p></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover">
+        <div class="testimonial-stars text-lg mb-3">★★★★★</div>
+        <p class="text-sm text-gray-600 italic mb-4">"Iba a cambiarme de Derecho a algo completamente diferente. El test confirmó que el problema no era Derecho sino la especialidad. Ahora estoy enfocado en Derecho Corporativo y siento que eso era lo que buscaba desde el principio."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white text-sm" style="background:#27AE60;">AL</div>
+          <div><p class="font-bold text-sm" style="color:#1B3A5C;">Andrés L.</p><p class="text-xs text-gray-400">20 años · Universitario</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VENTAJAS VIDA PROFESIONAL INTELIGENTE ── -->
+<section class="py-20 px-4 bg-white">
+  <div class="max-w-5xl mx-auto">
+    <span class="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full inline-block mb-6" style="background:#EFF6FF;color:#2E86C1;">Por qué importa elegir con inteligencia</span>
+    <h2 class="text-2xl sm:text-4xl font-black mb-4" style="color:#1B3A5C;line-height:1.2;">
+      Cuando eliges bien,<br/>
+      <span class="gradient-text">todo lo demás se vuelve más fácil.</span>
+    </h2>
+    <p class="text-gray-500 text-lg mb-14 max-w-2xl">La carrera correcta no solo te da trabajo. Te da identidad, propósito y la capacidad de construir la vida que realmente quieres.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-14">
+
+      <!-- Ventaja 1 -->
+      <div class="relative">
+        <div class="text-4xl mb-4">🚀</div>
+        <h3 class="text-lg font-black mb-3" style="color:#1B3A5C;">Mayor capacidad de desarrollo</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Una persona que trabaja en lo que le apasiona y para lo que tiene talento natural crece más rápido, aprende con menos esfuerzo y escala sin fricciones. No es suerte. Es alineación.</p>
+        <div class="mt-4 h-1 w-12 rounded-full" style="background:#2E86C1;"></div>
+      </div>
+
+      <!-- Ventaja 2 -->
+      <div class="relative">
+        <div class="text-4xl mb-4">🏆</div>
+        <h3 class="text-lg font-black mb-3" style="color:#1B3A5C;">Mayor probabilidad de éxito</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">El éxito no llega por trabajar más horas. Llega cuando tus habilidades naturales, tus intereses y el mercado convergen en un mismo punto. Brújula te ayuda a encontrar ese punto antes que nadie.</p>
+        <div class="mt-4 h-1 w-12 rounded-full" style="background:#D4A846;"></div>
+      </div>
+
+      <!-- Ventaja 3 -->
+      <div class="relative">
+        <div class="text-4xl mb-4">🎯</div>
+        <h3 class="text-lg font-black mb-3" style="color:#1B3A5C;">Logras los objetivos que importan</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">No cualquier objetivo. Los tuyos. El ingreso que deseas, el estilo de vida que imaginas, el trabajo que te hace sentir que vale la pena levantarse. Todo eso empieza con una decisión informada hoy.</p>
+        <div class="mt-4 h-1 w-12 rounded-full" style="background:#27AE60;"></div>
+      </div>
+    </div>
+
+    <!-- Bloque central emocional -->
+    <div class="rounded-3xl p-8 sm:p-12 text-center" style="background:linear-gradient(135deg,#0d2137,#1B3A5C);">
+      <p class="text-4xl mb-6">🧭</p>
+      <h3 class="text-2xl sm:text-3xl font-black text-white mb-4 leading-tight">
+        No es sobre elegir una carrera.<br/>
+        <span style="color:#D4A846;">Es sobre elegir quién vas a ser.</span>
+      </h3>
+      <p class="text-white text-base leading-relaxed mb-6 max-w-2xl mx-auto" style="opacity:.80;">
+        Las personas que eligen con información tienen carreras más largas, más satisfactorias y mejor remuneradas. Cambian menos de rumbo. Avanzan con más confianza. Y lo más importante: duermen tranquilas sabiendo que están en el lugar correcto.
+      </p>
+      <p class="text-white text-base leading-relaxed mb-8 max-w-2xl mx-auto" style="opacity:.80;">
+        La diferencia entre una carrera que se siente como carga y una que se siente como propósito no es el talento. Es la información con la que se tomó la decisión.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
+        <div class="rounded-2xl p-4" style="background:rgba(255,255,255,.08);">
+          <p class="text-2xl font-black" style="color:#D4A846;">3x</p>
+          <p class="text-xs text-white mt-1" style="opacity:.7;">más probable alcanzar liderazgo en tu área cuando eliges con alineación vocacional</p>
+        </div>
+        <div class="rounded-2xl p-4" style="background:rgba(255,255,255,.08);">
+          <p class="text-2xl font-black" style="color:#27AE60;">+40%</p>
+          <p class="text-xs text-white mt-1" style="opacity:.7;">de satisfacción laboral reportada por personas que trabajan en su área de vocación natural</p>
+        </div>
+        <div class="rounded-2xl p-4" style="background:rgba(255,255,255,.08);">
+          <p class="text-2xl font-black" style="color:#2E86C1;">-70%</p>
+          <p class="text-xs text-white mt-1" style="opacity:.7;">de probabilidad de cambiar de carrera cuando la decisión se toma con evaluación científica</p>
+        </div>
+      </div>
+      <a href="#precios" class="inline-block px-8 py-4 rounded-2xl font-black text-base no-underline transition-all hover:scale-105" style="background:#D4A846;color:#1B3A5C;">
+        Quiero tomar la decisión correcta →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRECIOS ── -->
+<section id="precios" class="py-16 px-4" style="background:#F8F9FA;">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-center mb-3" style="color:#1B3A5C;">Servicios y precios</h2>
+    <p class="text-center text-gray-500 mb-10">Inversión única. Claridad que acompaña años de decisiones.</p>
+
+    <!-- ── SERVICIOS INDIVIDUALES ── -->
+    <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#2E86C1;">Para alumnos y familias</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+
+      <!-- Individual -->
+      <div class="price-card p-7">
+        <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#2E86C1;">Paquete Individual</p>
+        <p class="text-4xl font-black mb-1" style="color:#1B3A5C;">$4,499</p>
+        <p class="text-sm text-gray-400 mb-1">MXN · pago único</p>
+        <p class="text-xs mb-5" style="color:#6B7280;">⏱ Test ~35 min + sesión de interpretación 90 min</p>
+        <ul class="space-y-2 text-sm text-gray-600 mb-5">
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Test 360° online — 11 instrumentos científicos</li>
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Reporte PDF personalizado automático</li>
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Top 3 rutas vocacionales + 10 rutas técnicas</li>
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Arquetipo profesional (Emprendedor / Colaborador / Nómada)</li>
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Sesión de interpretación 90 min — presencial CDMX o videollamada</li>
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Reporte digital del alumno</li>
+        </ul>
+        <div class="flex items-center gap-2 p-3 rounded-xl mb-5 text-xs" style="background:#F0FDF4;color:#15803D;">
+          🛡️ <span><strong>Garantía de satisfacción:</strong> si al terminar la sesión no quedas conforme, te devolvemos el 50% sin preguntas.</span>
+        </div>
+        <a href="https://wa.me/5560983059?text=Quiero+contratar+el+Paquete+Individual+%244%2C499"
+          target="_blank" onclick="trackEvent('whatsapp_clicked',{package:'individual'})"
+          class="block text-center py-3 rounded-xl font-bold text-sm no-underline mb-2" style="background:#EFF6FF;color:#2E86C1;">
+          💬 Contratar por WhatsApp →
+        </a>
+        <a href="https://mpago.li/327CNnx" target="_blank"
+          onclick="trackEvent('checkout_started',{package:'individual',price:4499,currency:'MXN'})"
+          class="btn-primary block text-center py-3 rounded-xl font-bold text-sm no-underline">
+          💳 Pagar con Mercado Pago →
+        </a>
+        <p class="text-center text-xs mt-3" style="color:#27AE60;">✅ Disponible a 3 y 6 meses sin intereses con tarjetas participantes.</p>
+      </div>
+
+      <!-- Familiar -->
+      <div class="price-card featured p-7 relative">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+          <span class="text-xs font-bold px-4 py-1.5 rounded-full text-white shadow" style="background:#D4A846;">⭐ Mejor valor</span>
+        </div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#2E86C1;">Paquete Familiar</p>
+        <p class="text-4xl font-black mb-1" style="color:#1B3A5C;">$6,500</p>
+        <p class="text-sm text-gray-400 mb-1">MXN · pago único</p>
+        <p class="text-xs mb-5" style="color:#27AE60; font-weight:600;">Incluye todo lo del Individual + guía de universidades</p>
+        <ul class="space-y-2 text-sm text-gray-600 mb-5">
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Test 360° online — 11 instrumentos científicos</li>
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Reporte PDF personalizado automático</li>
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Top 3 rutas vocacionales + 10 rutas técnicas</li>
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Arquetipo profesional</li>
+          <li class="flex gap-2"><span style="color:#27AE60;">✓</span> Sesión de interpretación 90 min — presencial CDMX o videollamada</li>
+          <li class="flex gap-2"><span style="color:#D4A846;font-weight:bold;">✓</span> <strong>Sesión con padres o tutores incluida</strong></li>
+          <li class="flex gap-2"><span style="color:#D4A846;font-weight:bold;">✓</span> <strong>Revisión detallada de las 2 carreras prioritarias</strong></li>
+          <li class="flex gap-2"><span style="color:#D4A846;font-weight:bold;">✓</span> <strong>Guía personalizada de universidades: escuelas, ubicaciones, costos de referencia, requisitos y fechas clave</strong></li>
+        </ul>
+        <div class="flex items-center gap-2 p-3 rounded-xl mb-5 text-xs" style="background:#F0FDF4;color:#15803D;">
+          🛡️ <span><strong>Garantía de satisfacción:</strong> si al terminar la sesión no quedas conforme, te devolvemos el 50% sin preguntas.</span>
+        </div>
+        <a href="https://wa.me/5560983059?text=Quiero+contratar+el+Paquete+Familiar+%246%2C500"
+          target="_blank" onclick="trackEvent('whatsapp_clicked',{package:'familiar'})"
+          class="block text-center py-3 rounded-xl font-bold text-sm no-underline mb-2" style="background:#EFF6FF;color:#2E86C1;">
+          💬 Contratar por WhatsApp →
+        </a>
+        <a href="https://mpago.li/23Xm7JE" target="_blank"
+          onclick="trackEvent('checkout_started',{package:'familiar',price:6500,currency:'MXN'})"
+          class="btn-primary block text-center py-3 rounded-xl font-bold text-sm no-underline">
+          💳 Pagar con Mercado Pago →
+        </a>
+        <p class="text-center text-xs mt-3" style="color:#27AE60;">✅ Disponible a 3 y 6 meses sin intereses con tarjetas participantes.</p>
+      </div>
+    </div>
+
+    <!-- ── PROCESO DE COMPRA ── -->
+    <div class="bg-white rounded-2xl p-6 card-shadow mb-10">
+      <p class="text-xs font-bold uppercase tracking-widest mb-4 text-center" style="color:#2E86C1;">¿Cómo funciona la contratación?</p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+        <div>
+          <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center font-black text-white text-lg" style="background:#1B3A5C;">1</div>
+          <p class="text-xs font-bold mb-1" style="color:#1B3A5C;">Elige tu paquete</p>
+          <p class="text-xs text-gray-400">Individual o Familiar según tu situación</p>
+        </div>
+        <div>
+          <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center font-black text-white text-lg" style="background:#2E86C1;">2</div>
+          <p class="text-xs font-bold mb-1" style="color:#1B3A5C;">Paga en línea</p>
+          <p class="text-xs text-gray-400">Tarjeta, OXXO o transferencia vía Mercado Pago</p>
+        </div>
+        <div>
+          <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center font-black text-white text-lg" style="background:#D4A846;">3</div>
+          <p class="text-xs font-bold mb-1" style="color:#1B3A5C;">Recibe tu acceso</p>
+          <p class="text-xs text-gray-400">Link al test en menos de 24 hrs por WhatsApp</p>
+        </div>
+        <div>
+          <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center font-black text-white text-lg" style="background:#27AE60;">4</div>
+          <p class="text-xs font-bold mb-1" style="color:#1B3A5C;">Haz el test y tu sesión</p>
+          <p class="text-xs text-gray-400">~35 min online + sesión 90 min con orientador</p>
+        </div>
+      </div>
+      <div class="mt-4 p-3 rounded-xl text-center text-xs" style="background:#F0F9FF;color:#2E86C1;">
+        💳 Aceptamos: <strong>Visa · Mastercard · American Express · OXXO · Transferencia SPEI</strong> · Pago 100% seguro vía Mercado Pago
+      </div>
+    </div>
+
+    <!-- ── SERVICIOS ESCOLARES ── -->
+    <p class="text-xs font-bold uppercase tracking-widest mb-4" style="color:#2E86C1;">Para escuelas y preparatorias</p>
+    <div class="bg-white rounded-2xl card-shadow overflow-hidden mb-6">
+      <div class="p-5" style="background:linear-gradient(135deg,#1B3A5C,#2E86C1);">
+        <h3 class="text-white font-extrabold text-lg">🏫 Programas Institucionales</h3>
+        <p class="text-white text-xs mt-1" style="opacity:.75;">Orientación profesional a escala para toda una generación. Co-branding incluido.</p>
+      </div>
+      <!-- Tabla comparativa -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr style="background:#F8F9FA;">
+              <th class="text-left p-4 text-xs font-bold" style="color:#1B3A5C; min-width:200px;">¿Qué incluye?</th>
+              <th class="p-4 text-center text-xs font-bold" style="color:#2E86C1; min-width:140px;">Taller Express<br/><span class="text-base font-black" style="color:#1B3A5C;">$2,249</span><br/><span class="font-normal text-gray-400">por alumno · 10–25</span></th>
+              <th class="p-4 text-center text-xs font-bold" style="color:#2E86C1; min-width:140px; background:#EFF6FF;">Programa Completo<br/><span class="text-base font-black" style="color:#1B3A5C;">$2,024</span><br/><span class="font-normal text-gray-400">por alumno · 26–60</span></th>
+              <th class="p-4 text-center text-xs font-bold" style="color:#D4A846; min-width:140px;">Convenio Semestral<br/><span class="text-base font-black" style="color:#1B3A5C;">Desde $86,250</span><br/><span class="font-normal text-gray-400">semestre completo</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-gray-100"><td class="p-3 pl-4 text-gray-600">Test online individual</td><td class="p-3 text-center text-lg">✅</td><td class="p-3 text-center text-lg" style="background:#EFF6FF;">✅</td><td class="p-3 text-center text-lg">✅</td></tr>
+            <tr class="border-t border-gray-100" style="background:#FAFAFA;"><td class="p-3 pl-4 text-gray-600">Reporte PDF por alumno</td><td class="p-3 text-center text-lg">✅</td><td class="p-3 text-center text-lg" style="background:#EFF6FF;">✅</td><td class="p-3 text-center text-lg">✅</td></tr>
+            <tr class="border-t border-gray-100"><td class="p-3 pl-4 text-gray-600">Sesión colectiva de resultados</td><td class="p-3 text-center text-lg">✅</td><td class="p-3 text-center text-lg" style="background:#EFF6FF;">✅</td><td class="p-3 text-center text-lg">✅</td></tr>
+            <tr class="border-t border-gray-100" style="background:#FAFAFA;"><td class="p-3 pl-4 text-gray-600">Co-branding logo de la escuela</td><td class="p-3 text-center text-gray-300 text-lg">✗</td><td class="p-3 text-center text-lg" style="background:#EFF6FF;">✅</td><td class="p-3 text-center text-lg">✅</td></tr>
+            <tr class="border-t border-gray-100"><td class="p-3 pl-4 text-gray-600">Sesión con padres de familia</td><td class="p-3 text-center text-gray-300 text-lg">✗</td><td class="p-3 text-center text-lg" style="background:#EFF6FF;">✅</td><td class="p-3 text-center text-lg">✅</td></tr>
+            <tr class="border-t border-gray-100" style="background:#FAFAFA;"><td class="p-3 pl-4 text-gray-600">Reporte Institucional Ejecutivo</td><td class="p-3 text-center text-gray-300 text-lg">✗</td><td class="p-3 text-center text-lg" style="background:#EFF6FF;">✅</td><td class="p-3 text-center text-lg">✅</td></tr>
+            <tr class="border-t border-gray-100"><td class="p-3 pl-4 text-gray-600">Certificado para expediente</td><td class="p-3 text-center text-gray-300 text-lg">✗</td><td class="p-3 text-center text-lg" style="background:#EFF6FF;">✅</td><td class="p-3 text-center text-lg">✅</td></tr>
+            <tr class="border-t border-gray-100" style="background:#FAFAFA;"><td class="p-3 pl-4 text-gray-600">Soporte prioritario semestral</td><td class="p-3 text-center text-gray-300 text-lg">✗</td><td class="p-3 text-center text-gray-300 text-lg" style="background:#EFF6FF;">✗</td><td class="p-3 text-center text-lg">✅</td></tr>
+            <tr class="border-t border-gray-100"><td class="p-3 pl-4 text-gray-600">Acceso múltiples generaciones</td><td class="p-3 text-center text-gray-300 text-lg">✗</td><td class="p-3 text-center text-gray-300 text-lg" style="background:#EFF6FF;">✗</td><td class="p-3 text-center text-lg">✅</td></tr>
+            <tr class="border-t border-gray-100" style="background:#FAFAFA;"><td class="p-3 pl-4 text-gray-600">Duración</td><td class="p-3 text-center text-xs text-gray-500">Medio día</td><td class="p-3 text-center text-xs text-gray-500" style="background:#EFF6FF;">1 día completo</td><td class="p-3 text-center text-xs text-gray-500">Todo el semestre</td></tr>
+            <tr class="border-t border-gray-100">
+              <td class="p-4"></td>
+              <td class="p-4 text-center"><a href="https://wa.me/5560983059?text=Quiero+informaci%C3%B3n+del+Taller+Express+%242%2C249+por+alumno" target="_blank" class="inline-block px-4 py-2 rounded-xl text-xs font-bold no-underline" style="background:#EFF6FF;color:#2E86C1;">Solicitar cotización →</a></td>
+              <td class="p-4 text-center" style="background:#EFF6FF;"><a href="https://wa.me/5560983059?text=Quiero+informaci%C3%B3n+del+Programa+Escolar+Completo+%242%2C024+por+alumno" target="_blank" class="btn-primary inline-block px-4 py-2 rounded-xl text-xs font-bold no-underline">Solicitar cotización →</a></td>
+              <td class="p-4 text-center"><a href="https://wa.me/5560983059?text=Quiero+informaci%C3%B3n+del+Convenio+Semestral+para+mi+escuela" target="_blank" class="inline-block px-4 py-2 rounded-xl text-xs font-bold no-underline" style="background:#FEF3C7;color:#92400E;">Solicitar propuesta →</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Convenio niveles -->
+      <div class="p-5 border-t border-gray-100" style="background:#FFFBEB;">
+        <p class="text-xs font-bold mb-3" style="color:#92400E;">📋 Niveles del Convenio Semestral</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+          <div class="bg-white rounded-xl p-3 border border-yellow-100">
+            <p class="font-black text-lg" style="color:#1B3A5C;">$86,250</p>
+            <p class="text-xs text-gray-500">Básico · hasta 60 alumnos/sem</p>
+            <p class="text-xs font-bold mt-1" style="color:#27AE60;">~$1,437 / alumno</p>
+          </div>
+          <div class="bg-white rounded-xl p-3 border-2" style="border-color:#D4A846;">
+            <p class="font-black text-lg" style="color:#1B3A5C;">$138,000</p>
+            <p class="text-xs text-gray-500">Estándar · hasta 120 alumnos/sem</p>
+            <p class="text-xs font-bold mt-1" style="color:#27AE60;">~$1,150 / alumno</p>
+          </div>
+          <div class="bg-white rounded-xl p-3 border border-yellow-100">
+            <p class="font-black text-lg" style="color:#1B3A5C;">$230,000</p>
+            <p class="text-xs text-gray-500">Institucional · hasta 250 alumnos/sem</p>
+            <p class="text-xs font-bold mt-1" style="color:#27AE60;">~$920 / alumno</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PARA PADRES / PARA ESTUDIANTES ── -->
+<section class="py-16 px-4 bg-white">
+  <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
+    <div class="rounded-2xl p-7 card-shadow card-hover" style="background:linear-gradient(135deg,#1B3A5C,#234B78);">
+      <div class="text-4xl mb-3">👨‍👩‍👧</div>
+      <h3 class="font-extrabold text-xl text-white mb-3">Para padres de familia</h3>
+      <p class="text-white text-sm mb-4 leading-relaxed" style="opacity:.80;">Una evaluación profesional es la inversión más rentable antes de la universidad. Cambiar de carrera en 2° año puede costar $120,000–$400,000 MXN y 2 años de vida.</p>
+      <ul class="space-y-2 text-sm text-white" style="opacity:.80;">
+        <li>✅ Elimina la incertidumbre familiar</li>
+        <li>✅ Reduce riesgo de deserción universitaria</li>
+        <li>✅ Sesión familiar incluida en Premium</li>
+        <li>✅ Alineación entre perfil y carrera elegida</li>
+      </ul>
+    </div>
+    <div class="rounded-2xl p-7 card-shadow card-hover" style="background:linear-gradient(135deg,#2E86C1,#1a6fa8);">
+      <div class="text-4xl mb-3">🎓</div>
+      <h3 class="font-extrabold text-xl text-white mb-3">Para estudiantes</h3>
+      <p class="text-white text-sm mb-4 leading-relaxed" style="opacity:.80;">No tienes que adivinar. Tienes un perfil único. La evaluación te muestra con datos reales qué carreras van con quien tú eres — no con quien los demás quieren que seas.</p>
+      <ul class="space-y-2 text-sm text-white" style="opacity:.80;">
+        <li>✅ Resultados basados en ciencia, no en opiniones</li>
+        <li>✅ Carreras compatibles con tu perfil real</li>
+        <li>✅ Reporte descargable en PDF</li>
+        <li>✅ Orientador disponible por WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── GARANTÍA ── -->
+<section class="py-12 px-4" style="background:#F8F9FA;">
+  <div class="max-w-3xl mx-auto">
+    <div class="guarantee-box p-8 text-center">
+      <div class="text-5xl mb-4">🛡️</div>
+      <h3 class="font-extrabold text-xl mb-3" style="color:#1B3A5C;">Garantía de satisfacción</h3>
+      <p class="text-gray-600 text-sm leading-relaxed max-w-xl mx-auto">
+        Si al terminar tu sesión de devolución sientes que el servicio no cumplió lo que prometimos, te devolvemos el <strong>50% de tu inversión sin preguntas</strong>. Creemos tanto en nuestra metodología que lo respaldamos con nuestro propio dinero.
+      </p>
+      <p class="text-xs text-gray-400 mt-4">Válido para sesiones individuales Estándar y Premium. Condiciones disponibles por WhatsApp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq" class="py-16 px-4 bg-white">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-2xl sm:text-3xl font-extrabold text-center mb-10" style="color:#1B3A5C;">Preguntas frecuentes</h2>
+    <div class="space-y-4">
+      <details class="bg-white border border-gray-100 rounded-2xl p-5 card-shadow cursor-pointer group">
+        <summary class="font-bold text-sm sm:text-base flex justify-between items-center list-none" style="color:#1B3A5C;">
+          ¿Qué incluye el servicio? <span class="text-gray-400 transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="text-sm text-gray-500 mt-3 leading-relaxed">El servicio incluye el test completo online (~35 min), el reporte PDF personalizado con tus 3 rutas vocacionales y la sesión de orientación con un consultor. Todo está incluido en el paquete que elijas. No hay cobros ocultos ni sorpresas.</p>
+      </details>
+      <details class="bg-white border border-gray-100 rounded-2xl p-5 card-shadow cursor-pointer group">
+        <summary class="font-bold text-sm sm:text-base flex justify-between items-center list-none" style="color:#1B3A5C;">
+          ¿Cuánto dura la sesión de devolución? <span class="text-gray-400 transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="text-sm text-gray-500 mt-3 leading-relaxed">60-75 min en Estándar. En Premium incluye 2 sesiones: una individual (60 min) y una familiar (75 min). Pueden ser presenciales en CDMX o por videollamada.</p>
+      </details>
+      <details class="bg-white border border-gray-100 rounded-2xl p-5 card-shadow cursor-pointer group">
+        <summary class="font-bold text-sm sm:text-base flex justify-between items-center list-none" style="color:#1B3A5C;">
+          ¿Para qué edades funciona mejor? <span class="text-gray-400 transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="text-sm text-gray-500 mt-3 leading-relaxed">Diseñado para jóvenes de 15 a 25 años: estudiantes de preparatoria (especialmente 3er grado), recién egresados indecisos y universitarios considerando cambiar de carrera.</p>
+      </details>
+      <details class="bg-white border border-gray-100 rounded-2xl p-5 card-shadow cursor-pointer group">
+        <summary class="font-bold text-sm sm:text-base flex justify-between items-center list-none" style="color:#1B3A5C;">
+          ¿Cómo se paga? <span class="text-gray-400 transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="text-sm text-gray-500 mt-3 leading-relaxed">Transferencia bancaria, depósito OXXO o tarjeta (débito/crédito) vía MercadoPago. Se confirma la sesión al recibir el pago.</p>
+      </details>
+      <details class="bg-white border border-gray-100 rounded-2xl p-5 card-shadow cursor-pointer group">
+        <summary class="font-bold text-sm sm:text-base flex justify-between items-center list-none" style="color:#1B3A5C;">
+          ¿Pueden contratarlo colegios o preparatorias? <span class="text-gray-400 transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <p class="text-sm text-gray-500 mt-3 leading-relaxed">Sí. Ofrecemos convenios institucionales por ciclo escolar y servicio grupal desde 15 alumnos. Escríbenos por WhatsApp para cotización personalizada.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+<section class="hero-bg py-20 px-4 text-center">
+  <div class="max-w-2xl mx-auto">
+    <div class="text-6xl mb-6 animate-float">🧭</div>
+    <h2 class="text-2xl sm:text-4xl font-black text-white mb-4">
+      Tu carrera empieza con<br/><span class="gradient-text">una sola decisión inteligente.</span>
+    </h2>
+    <p class="text-white text-lg mb-6" style="opacity:.80;">Elige tu futuro profesional con inteligencia. No con suerte.</p>
+
+    <!-- Mensaje para quien acompaña -->
+    <div class="max-w-2xl mx-auto mb-10 rounded-2xl px-6 py-5 text-left" style="background:rgba(255,255,255,0.08);border-left:3px solid #D4A846;">
+      <p class="text-sm font-bold mb-2" style="color:#D4A846;">Para quien acompaña esta decisión:</p>
+      <p class="text-white text-sm leading-relaxed" style="opacity:.85;">
+        Esta evaluación aplica 11 instrumentos científicos que analizan gustos, habilidades, motivaciones y toda la información relevante para el futuro de quien está eligiendo su camino profesional.
+      </p>
+      <p class="text-white text-sm font-bold mt-3">
+        El desarrollo profesional adecuado no se adivina. Se descubre. Brújula Inteligente ayuda a encontrar el mejor camino para lograr los objetivos de vida, con inteligencia y con respaldo científico.
+      </p>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#precios" class="btn-primary text-lg !py-5 !px-10">▶️ Ver paquetes y contratar</a>
+      <a href="https://wa.me/5560983059?text=Hola%2C+quiero+informaci%C3%B3n+sobre+Br%C3%BAjula+Inteligente"
+        target="_blank" class="btn-wa text-lg !py-5 !px-10">💬 Hablar con el consultor</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="py-8 px-4" style="background:#0d2137;">
+  <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl">🧭</span>
+      <div>
+        <p class="font-bold text-white">Brújula Inteligente</p>
+        <p class="text-xs" style="color:#D4A846;">La decisión más importante de tu vida profesional, tomada con inteligencia.</p>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row gap-4 text-sm text-center">
+      <a href="mailto:contacto@brujulainteligente.com" class="text-white opacity-60 hover:opacity-100 no-underline">contacto@brujulainteligente.com</a>
+      <a href="https://wa.me/5560983059" target="_blank" class="text-white opacity-60 hover:opacity-100 no-underline">55 6098 3059</a>
+    </div>
+  </div>
+  <div class="max-w-4xl mx-auto mt-5 pt-5 border-t text-center" style="border-color:rgba(255,255,255,.08);">
+    <p class="text-xs" style="color:rgba(255,255,255,.3);">© 2026 Brújula Inteligente · Los resultados no constituyen diagnóstico clínico ni psicológico.</p>
+  </div>
+</footer>
+
+<!-- ── FLOATING WA BUTTON ── -->
+<a id="wa-float" href="https://wa.me/5560983059?text=Hola%2C+me+interesa+Br%C3%BAjula+Inteligente" target="_blank" rel="noopener" title="Escribir por WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.556 4.124 1.528 5.856L.057 23.5l5.806-1.522A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.51-5.17-1.4l-.37-.22-3.44.9.92-3.36-.24-.38A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<!-- ── MOBILE STICKY BAR ── -->
+<div id="mobile-bar">
+  <a href="evaluacion_brujula_online.html" class="mob-btn text-white" style="background:linear-gradient(135deg,#2E86C1,#D4A846);">▶️ Hacer el Test</a>
+  <a href="https://wa.me/5560983059?text=Hola%2C+me+interesa+Br%C3%BAjula+Inteligente" target="_blank" class="mob-btn text-white" style="background:#25D366;">💬 WhatsApp</a>
+</div>
+
+<!-- ── JAVASCRIPT ── -->
+<script>
+  // ── ROI Calculator ──────────────────────────────────────────────
+  const ROI_DATA = {
+    publica:      { annual: 18000,  label: "universidad pública",         monthly: 1500 },
+    privada_media:{ annual: 72000,  label: "privada media ($6k/mes)",     monthly: 6000 },
+    privada_alta: { annual: 216000, label: "privada premium ($18k/mes)",  monthly: 18000 }
+  };
+
+  function fmtMXN(n) {
+    return "$" + n.toLocaleString("es-MX") + " MXN";
+  }
+
+  function calcROI() {
+    const type   = document.getElementById("uni-type").value;
+    const years  = parseInt(document.getElementById("switch-years").value);
+    const data   = ROI_DATA[type];
+    const colegiatura = data.annual * years;
+    const vida   = data.monthly * 0.5 * 12 * years; // gastos extra estimados 50% de colegiatura
+    const total  = colegiatura + vida;
+    const saving = total - 6500;
+    const roi    = Math.round((saving / 6500) * 100);
+    const pctBrujula = ((6500 / total) * 100).toFixed(1);
+
+    document.getElementById("calc-result").innerHTML = `
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-5">
+        <div class="rounded-xl p-4" style="background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.3);">
+          <p class="text-xs mb-1" style="color:rgba(255,255,255,.6);">Colegiatura perdida</p>
+          <p class="text-xl font-black text-white">${fmtMXN(colegiatura)}</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,.5);">${years} año${years>1?"s":""} en ${data.label}</p>
+        </div>
+        <div class="rounded-xl p-4" style="background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.3);">
+          <p class="text-xs mb-1" style="color:rgba(255,255,255,.6);">Gastos de vida + tiempo</p>
+          <p class="text-xl font-black text-white">${fmtMXN(vida)}</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,.5);">${years * 12} meses de tu vida</p>
+        </div>
+        <div class="rounded-xl p-4" style="background:rgba(231,76,60,.25);border:1px solid rgba(231,76,60,.5);">
+          <p class="text-xs mb-1" style="color:rgba(255,255,255,.7);">Costo total estimado</p>
+          <p class="text-2xl font-black" style="color:#ff6b6b;">${fmtMXN(total)}</p>
+          <p class="text-xs mt-1" style="color:rgba(255,255,255,.5);">por equivocarse de carrera</p>
+        </div>
+      </div>
+      <div class="rounded-xl p-5 text-center" style="background:rgba(39,174,96,.15);border:1px solid rgba(39,174,96,.4);">
+        <p class="text-sm mb-2" style="color:rgba(255,255,255,.8);">La evaluación Premium cuesta <strong class="text-white">$6,500 MXN</strong></p>
+        <p class="text-3xl font-black mb-1" style="color:#4ade80;">Solo el ${pctBrujula}% de lo que podrías perder</p>
+        <p class="text-sm" style="color:rgba(255,255,255,.6);">
+          Previene una pérdida estimada de <strong class="text-white">${fmtMXN(total)}</strong> y ${years * 12} meses de tu vida.
+        </p>
+      </div>
+    `;
+  }
+
+  // Run on load
+  calcROI();
+
+  // ── Spots counter animation ──────────────────────────────────────
+  let spots = 18;
+  setInterval(() => {
+    const el = document.getElementById("spots-left");
+    if (el && spots > 14 && Math.random() > 0.85) {
+      spots--;
+      el.textContent = spots;
+    }
+  }, 45000);
+
+  // ── Scroll animations ─────────────────────────────────────────────
+  if ("IntersectionObserver" in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = "1";
+          e.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".card-hover, .price-card, details").forEach(el => {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "opacity .5s ease, transform .5s ease";
+      obs.observe(el);
+    });
+  }
+</script>
+
+</body>
+</html>
