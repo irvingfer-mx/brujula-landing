@@ -5,6 +5,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Brújula Inteligente – La decisión más importante de tu vida profesional, tomada con inteligencia.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <meta name="description" content="El desarrollo profesional adecuado no se adivina. Se descubre. 11 instrumentos científicos que analizan quién eres y dónde vas a destacar. Ciudad de México."/>
   <meta property="og:title" content="Brújula Inteligente – La decisión más importante de tu vida profesional, tomada con inteligencia."/>
   <meta property="og:description" content="Elige tu futuro profesional con inteligencia. No con suerte. Una sola evaluación. Claridad para los próximos 5 años."/>
@@ -33,140 +35,535 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root { --navy:#1B3A5C; --blue:#2E86C1; --gold:#D4A846; --green:#27AE60; }
-    html { scroll-behavior:smooth; }
-    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; margin:0; background:#fff; }
+:root {
+  --navy: #0f172a;
+  --navy-mid: #1e3a5f;
+  --blue: #3b82f6;
+  --indigo: #6366f1;
+  --indigo-dark: #4f46e5;
+  --amber: #f59e0b;
+  --amber-light: #fcd34d;
+  --green: #10b981;
+  --red: #ef4444;
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --gray-800: #1e293b;
+}
 
-    /* ── Animations ── */
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes gradShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
-    @keyframes pulseBorder { 0%,100%{box-shadow:0 0 0 0 rgba(212,168,70,.5)} 60%{box-shadow:0 0 0 14px rgba(212,168,70,0)} }
-    @keyframes countUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-    .animate-float { animation:float 4s ease-in-out infinite; }
-    .animate-fadeUp { animation:fadeUp .7s ease both; }
-    .animate-fadeUp-d1 { animation:fadeUp .7s ease .1s both; }
-    .animate-fadeUp-d2 { animation:fadeUp .7s ease .2s both; }
-    .animate-fadeUp-d3 { animation:fadeUp .7s ease .3s both; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--navy);
+  background: var(--white);
+  overflow-x: hidden;
+}
 
-    /* ── Hero ── */
-    .hero-bg {
-      background: linear-gradient(135deg,#0d2137 0%,#1B3A5C 45%,#1e5f8e 100%);
-      background-size:200% 200%;
-      animation:gradShift 10s ease infinite;
-    }
-    .hero-compass {
-      font-size:90px; line-height:1;
-      animation:float 4s ease-in-out infinite;
-      filter:drop-shadow(0 12px 32px rgba(212,168,70,.35));
-    }
-    .gold-text { color:#D4A846; }
-    .gradient-text {
-      background:linear-gradient(90deg,#D4A846,#f0c96e,#D4A846);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-      background-size:200%; animation:gradShift 3s ease infinite;
-    }
+/* ANIMACIONES GLOBALES */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    /* ── Buttons ── */
-    .btn-primary {
-      background:linear-gradient(135deg,#2E86C1,#D4A846);
-      color:#fff; font-weight:800; border-radius:16px;
-      padding:16px 32px; font-size:16px; text-decoration:none;
-      display:inline-block; transition:transform .2s,opacity .2s,box-shadow .2s;
-      box-shadow:0 4px 20px rgba(46,134,193,.4);
-    }
-    .btn-primary:hover { transform:translateY(-2px); opacity:.92; box-shadow:0 8px 32px rgba(46,134,193,.5); }
-    .btn-wa {
-      background:#25D366; color:#fff; font-weight:800; border-radius:16px;
-      padding:16px 32px; font-size:16px; text-decoration:none;
-      display:inline-block; transition:transform .2s,background .2s;
-    }
-    .btn-wa:hover { background:#1ebc58; transform:translateY(-2px); }
-    .btn-pulse { animation:pulseBorder 2.5s ease-in-out infinite; }
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.animate-delay-1 { transition-delay: 0.1s; }
+.animate-delay-2 { transition-delay: 0.2s; }
+.animate-delay-3 { transition-delay: 0.3s; }
+.animate-delay-4 { transition-delay: 0.4s; }
 
-    /* ── Nav ── */
-    .sticky-nav {
-      position:sticky; top:0; z-index:100;
-      background:rgba(13,33,55,.96); backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(255,255,255,.07);
-    }
+/* Clases heredadas del markup existente */
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-fadeUp { animation: fadeUp .7s ease both; }
+.animate-fadeUp-d1 { animation: fadeUp .7s ease .1s both; }
+.animate-fadeUp-d2 { animation: fadeUp .7s ease .2s both; }
+.animate-fadeUp-d3 { animation: fadeUp .7s ease .3s both; }
 
-    /* ── Cards ── */
-    .card-shadow { box-shadow:0 4px 24px rgba(0,0,0,.09); }
-    .card-hover { transition:transform .2s,box-shadow .2s; }
-    .card-hover:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.14); }
+/* HERO */
+.hero-bg, .hero-section {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg::before, .hero-section::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+  top: -200px;
+  right: -200px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-bg::after, .hero-section::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(245,158,11,0.1) 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  border-radius: 50%;
+  pointer-events: none;
+}
 
-    /* ── Launch Banner ── */
-    .launch-banner {
-      background:linear-gradient(90deg,#D4A846,#e8b84b,#D4A846);
-      background-size:200%; animation:gradShift 4s ease infinite;
-    }
+.hero-compass {
+  font-size: 90px;
+  line-height: 1;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 12px 32px rgba(245,158,11,.35));
+}
 
-    /* ── Comparison table ── */
-    .compare-no { color:#E74C3C; }
-    .compare-yes { color:#27AE60; }
+.gold-text { color: var(--amber); }
 
-    /* ── Testimonial ── */
-    .testimonial-stars { color:#D4A846; letter-spacing:2px; }
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #fcd34d 50%, #f59e0b 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
 
-    /* ── Price cards ── */
-    .price-card { border:2px solid #E5E7EB; border-radius:24px; background:#fff; transition:border-color .2s,box-shadow .2s,transform .2s; }
-    .price-card.featured { border-color:#2E86C1; box-shadow:0 12px 48px rgba(46,134,193,.18); transform:scale(1.02); }
-    .price-card:hover { border-color:#2E86C1; box-shadow:0 8px 32px rgba(46,134,193,.12); }
+/* BOTONES */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--indigo), var(--indigo-dark));
+  color: white;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(99,102,241,0.4);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(99,102,241,0.6);
+  opacity: 1;
+}
 
-    /* ── Calculator ── */
-    .calc-card { background:linear-gradient(135deg,#0d2137,#1B3A5C); border-radius:28px; padding:40px 32px; color:#fff; }
-    .calc-select {
-      background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2);
-      color:#fff; border-radius:12px; padding:12px 16px; width:100%;
-      font-size:15px; appearance:none; outline:none;
-      transition:border-color .2s,background .2s;
-    }
-    .calc-select:focus { border-color:#D4A846; background:rgba(255,255,255,.15); }
-    .calc-select option { background:#1B3A5C; color:#fff; }
-    .calc-result { min-height:100px; transition:all .4s; }
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #25D366, #1ebc58);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: all 0.3s ease;
+}
+.btn-wa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(37,211,102,0.6);
+  background: linear-gradient(135deg, #25D366, #1ebc58);
+}
 
-    /* ── Guarantee ── */
-    .guarantee-box {
-      background:linear-gradient(135deg,rgba(39,174,96,.08),rgba(39,174,96,.04));
-      border:2px solid rgba(39,174,96,.25); border-radius:20px;
-    }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
 
-    /* ── Floating WA ── */
-    #wa-float {
-      position:fixed; bottom:84px; right:20px; z-index:999;
-      background:#25D366; color:#fff; border-radius:50%;
-      width:56px; height:56px; display:flex; align-items:center; justify-content:center;
-      box-shadow:0 4px 20px rgba(37,211,102,.5);
-      text-decoration:none; transition:transform .2s,box-shadow .2s;
-    }
-    #wa-float:hover { transform:scale(1.1); }
+.btn-amber, .btn-pulse {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #0f172a;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 17px;
+  text-decoration: none;
+  box-shadow: 0 4px 25px rgba(245,158,11,0.5);
+  transition: all 0.3s ease;
+  animation: none;
+}
+.btn-amber:hover, .btn-pulse:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px rgba(245,158,11,0.7);
+}
 
-    /* ── Mobile sticky bar ── */
-    #mobile-bar {
-      position:fixed; bottom:0; left:0; right:0; z-index:98;
-      background:rgba(13,33,55,.98); backdrop-filter:blur(10px);
-      border-top:1px solid rgba(255,255,255,.1);
-      padding:12px 16px; display:none;
-      grid-template-columns:1fr 1fr; gap:10px;
-    }
-    @media(max-width:640px){ #mobile-bar{ display:grid; } }
-    .mob-btn { border-radius:12px; font-weight:800; font-size:14px; text-align:center; padding:13px 8px; text-decoration:none; display:block; }
+/* CARDS */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 24px rgba(15,23,42,0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(15,23,42,0.06);
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15,23,42,0.15);
+}
 
-    /* ── Step num ── */
-    .step-num {
-      width:48px; height:48px; border-radius:50%;
-      background:linear-gradient(135deg,#2E86C1,#1B3A5C);
-      color:#fff; display:flex; align-items:center; justify-content:center;
-      font-weight:900; font-size:20px; flex-shrink:0;
-    }
+.card-glass {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.15);
+  transition: all 0.3s ease;
+}
+.card-glass:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-4px);
+}
 
-    /* ── Scrollbar ── */
-    ::-webkit-scrollbar { width:6px; }
-    ::-webkit-scrollbar-track { background:#f1f1f1; }
-    ::-webkit-scrollbar-thumb { background:#2E86C1; border-radius:3px; }
+/* Aliases del markup existente */
+.card-shadow { box-shadow: 0 4px 24px rgba(15,23,42,0.08); }
+.card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15,23,42,0.15); }
+
+/* TRUST NUMBERS */
+.trust-number {
+  animation: countUp 0.8s ease forwards;
+  font-size: 48px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fcd34d, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* WAVE */
+.wave-divider { overflow: hidden; line-height: 0; }
+.wave-divider svg { display: block; width: 100%; }
+
+/* PAIN CARDS */
+.pain-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  border-left: 4px solid var(--indigo);
+  box-shadow: 0 4px 16px rgba(15,23,42,0.08);
+  transition: all 0.3s ease;
+}
+.pain-card:hover {
+  transform: translateX(6px);
+  box-shadow: 0 8px 24px rgba(99,102,241,0.2);
+  border-left-color: var(--amber);
+}
+
+/* INSTRUMENTO CARDS */
+.instrumento-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(15,23,42,0.06);
+  border: 1px solid rgba(99,102,241,0.1);
+  transition: all 0.3s ease;
+}
+.instrumento-card:hover {
+  border-color: var(--indigo);
+  box-shadow: 0 8px 24px rgba(99,102,241,0.15);
+  transform: translateY(-4px);
+}
+
+/* TESTIMONIOS */
+.testimonio-card {
+  background: white;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 8px 32px rgba(15,23,42,0.1);
+  border-top: 4px solid var(--indigo);
+  transition: all 0.3s ease;
+  position: relative;
+}
+.testimonio-card::before {
+  content: '"';
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 80px;
+  color: var(--indigo);
+  opacity: 0.1;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+.testimonio-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(15,23,42,0.15);
+}
+
+/* AVATAR */
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--indigo), var(--indigo-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* PRECIOS */
+.price-card, .precio-card {
+  background: white;
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 8px 32px rgba(15,23,42,0.1);
+  border: 2px solid rgba(15,23,42,0.06);
+  transition: all 0.3s ease;
+}
+.price-card:hover, .precio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(15,23,42,0.15);
+  border-color: var(--indigo);
+}
+.price-card.featured, .precio-card.featured {
+  border-color: var(--indigo);
+  box-shadow: 0 8px 32px rgba(99,102,241,0.2);
+}
+.price-card.featured:hover, .precio-card.featured:hover {
+  box-shadow: 0 24px 48px rgba(99,102,241,0.3);
+}
+
+/* PRECIO NÚMERO */
+.precio-numero {
+  font-size: 52px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--navy), var(--indigo));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* FAQ */
+details {
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,0.08);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+details[open] {
+  box-shadow: 0 4px 20px rgba(99,102,241,0.1);
+  border-color: var(--indigo);
+}
+details summary {
+  padding: 20px 24px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--navy);
+  background: white;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+details summary:hover { background: var(--gray-50); color: var(--indigo); }
+details summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--indigo);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+details[open] summary::after { transform: rotate(45deg); }
+details summary .text-gray-400 { display: none; }
+
+/* WA FLOTANTE */
+#wa-float {
+  position: fixed;
+  bottom: 84px;
+  right: 20px;
+  z-index: 999;
+  background: #25D366;
+  color: #fff;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 8px 32px rgba(37,211,102,0.5);
+}
+#wa-float:hover {
+  animation: none;
+  transform: scale(1.1);
+}
+#wa-float::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #25D366;
+  animation: pulse-ring 2s ease-out infinite;
+  z-index: -1;
+}
+
+/* MOBILE BAR */
+#mobile-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 98;
+  backdrop-filter: blur(20px);
+  background: rgba(15,23,42,0.95) !important;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 16px;
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media(max-width:640px) { #mobile-bar { display: grid; } }
+.mob-btn { border-radius: 12px; font-weight: 800; font-size: 14px; text-align: center; padding: 13px 8px; text-decoration: none; display: block; }
+
+/* STEP NUM */
+.step-num {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--indigo), var(--navy-mid));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+/* STARS */
+.stars, .testimonial-stars { color: var(--amber); letter-spacing: 2px; }
+
+/* BADGE */
+.badge { display: inline-block; padding: 4px 12px; border-radius: 50px; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; }
+.badge-indigo { background: rgba(99,102,241,0.1); color: var(--indigo); }
+.badge-amber { background: rgba(245,158,11,0.15); color: #d97706; }
+.badge-green { background: rgba(16,185,129,0.1); color: var(--green); }
+
+/* COMPARE */
+.compare-no { color: #ef4444; }
+.compare-yes { color: var(--green); }
+
+/* GUARANTEE */
+.guarantee-box {
+  background: linear-gradient(135deg, rgba(16,185,129,.08), rgba(16,185,129,.04));
+  border: 2px solid rgba(16,185,129,.25);
+  border-radius: 20px;
+}
+
+/* CALC */
+.calc-card { background: linear-gradient(135deg, #0f172a, #1e3a5f); border-radius: 28px; padding: 40px 32px; color: #fff; }
+.calc-select {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+  color: #fff; border-radius: 12px; padding: 12px 16px; width: 100%;
+  font-size: 15px; appearance: none; outline: none;
+  transition: border-color .2s, background .2s;
+}
+.calc-select:focus { border-color: var(--amber); background: rgba(255,255,255,.15); }
+.calc-select option { background: #1e3a5f; color: #fff; }
+.calc-result { min-height: 100px; transition: all .4s; }
+
+/* STICKY NAV */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15,23,42,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: var(--indigo); border-radius: 3px; }
+
+/* MÉTRICAS */
+.metrica-num {
+  font-size: 56px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fcd34d, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html { scroll-behavior: smooth; }
+
+@media (max-width: 640px) {
+  .precio-numero { font-size: 40px; }
+  .trust-number { font-size: 36px; }
+  .metrica-num { font-size: 42px; }
+}
   </style>
 </head>
 <body>
@@ -244,13 +641,19 @@
   </div>
 </section>
 
+<div class="wave-divider" style="background:linear-gradient(135deg,#0f172a,#1e3a5f);margin-top:-1px;">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="height:60px;">
+    <path d="M0,60 C360,0 1080,0 1440,60 L1440,0 L0,0 Z" fill="#ffffff"/>
+  </svg>
+</div>
+
 <!-- ── TRUST NUMBERS ── -->
 <section class="bg-white border-b py-8 px-4">
   <div class="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-    <div><p class="text-4xl font-black" style="color:#1B3A5C;">11</p><p class="text-sm text-gray-500 mt-1">factores que definen quién eres</p></div>
-    <div><p class="text-4xl font-black" style="color:#2E86C1;">194</p><p class="text-sm text-gray-500 mt-1">preguntas diseñadas por expertos</p></div>
-    <div><p class="text-4xl font-black" style="color:#D4A846;">+120</p><p class="text-sm text-gray-500 mt-1">rutas profesionales analizadas</p></div>
-    <div><p class="text-4xl font-black" style="color:#27AE60;">1</p><p class="text-sm text-gray-500 mt-1">sesión que puede cambiar tu dirección</p></div>
+    <div><p class="text-4xl font-black trust-number" data-target="11" data-suffix="" style="color:#1B3A5C;">11</p><p class="text-sm text-gray-500 mt-1">factores que definen quién eres</p></div>
+    <div><p class="text-4xl font-black trust-number" data-target="194" data-suffix="" style="color:#2E86C1;">194</p><p class="text-sm text-gray-500 mt-1">preguntas diseñadas por expertos</p></div>
+    <div><p class="text-4xl font-black trust-number" data-target="120" data-suffix="+" style="color:#D4A846;">+120</p><p class="text-sm text-gray-500 mt-1">rutas profesionales analizadas</p></div>
+    <div><p class="text-4xl font-black trust-number" data-target="1" data-suffix="" style="color:#27AE60;">1</p><p class="text-sm text-gray-500 mt-1">sesión que puede cambiar tu dirección</p></div>
   </div>
 </section>
 
@@ -260,32 +663,32 @@
     <h2 class="text-2xl sm:text-3xl font-extrabold text-center mb-3" style="color:#1B3A5C;">¿Te suena familiar alguno de estos?</h2>
     <p class="text-center text-gray-500 mb-10">Si marcas 2 o más, este servicio es para ti.</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover animate-on-scroll animate-delay-1">
         <p class="text-2xl mb-2">😰</p>
         <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"No sé qué estudiar y ya es tarde"</p>
         <p class="text-xs text-gray-500">La fecha límite de admisión se acerca y no hay una respuesta clara.</p>
       </div>
-      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover animate-on-scroll animate-delay-2">
         <p class="text-2xl mb-2">🤷</p>
         <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"Me gustan muchas cosas pero no sé en cuál enfocarme"</p>
         <p class="text-xs text-gray-500">Demasiadas opciones y todas parecen igual de buenas o de malas.</p>
       </div>
-      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover animate-on-scroll animate-delay-3">
         <p class="text-2xl mb-2">👨‍👩‍👧</p>
         <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"Mi familia quiere una cosa y yo quiero otra"</p>
         <p class="text-xs text-gray-500">La presión del entorno hace más difícil escuchar la voz propia.</p>
       </div>
-      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover animate-on-scroll animate-delay-1">
         <p class="text-2xl mb-2">💸</p>
         <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"No quiero arriesgar años y dinero en la carrera equivocada"</p>
         <p class="text-xs text-gray-500">Cambiar de carrera en 2° año puede costar $120k–$400k MXN y 2 años más.</p>
       </div>
-      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover animate-on-scroll animate-delay-2">
         <p class="text-2xl mb-2">🎭</p>
         <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"Ya empecé una carrera pero no me convence"</p>
         <p class="text-xs text-gray-500">Algo no encaja pero tampoco sabes si el problema eres tú o la carrera.</p>
       </div>
-      <div class="bg-white rounded-2xl p-5 card-shadow card-hover">
+      <div class="bg-white rounded-2xl p-5 card-shadow card-hover animate-on-scroll animate-delay-3">
         <p class="text-2xl mb-2">🔮</p>
         <p class="font-bold text-sm mb-1" style="color:#1B3A5C;">"Quiero saber si de verdad tengo lo que se necesita"</p>
         <p class="text-xs text-gray-500">Hay una carrera en mente pero falta la certeza de que es la correcta.</p>
@@ -488,14 +891,14 @@
     <p style="color:#4b5563;font-size:16px;max-width:600px;margin:0 auto 48px;">Cada reporte es único. Este es un ejemplo de lo que recibes — basado en un perfil real con datos modificados.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;text-align:left;">
 
-      <div style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.08);border-top:4px solid #6366f1;">
+      <div class="animate-on-scroll animate-delay-1" style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.08);border-top:4px solid #6366f1;">
         <div style="font-size:28px;margin-bottom:12px;">🎯</div>
         <p style="font-size:11px;font-weight:700;color:#6366f1;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Tu arquetipo profesional</p>
         <h3 style="color:#0f2d4a;font-size:20px;font-weight:800;margin-bottom:8px;">Estratega Creativo</h3>
         <p style="color:#4b5563;font-size:14px;line-height:1.6;">Combinas pensamiento analítico con capacidad creativa. Te destacas donde hay problemas complejos que resolver con soluciones originales. Lideras mejor cuando tienes autonomía.</p>
       </div>
 
-      <div style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.08);border-top:4px solid #0ea5e9;">
+      <div class="animate-on-scroll animate-delay-2" style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.08);border-top:4px solid #0ea5e9;">
         <div style="font-size:28px;margin-bottom:12px;">🏆</div>
         <p style="font-size:11px;font-weight:700;color:#0ea5e9;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Tu carrera con mayor match</p>
         <h3 style="color:#0f2d4a;font-size:20px;font-weight:800;margin-bottom:8px;">Ingeniería en Innovación</h3>
@@ -511,7 +914,7 @@
         <p style="color:#4b5563;font-size:13px;">Salario inicial estimado: $18,000–$28,000 MXN/mes</p>
       </div>
 
-      <div style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.08);border-top:4px solid #10b981;">
+      <div class="animate-on-scroll animate-delay-3" style="background:#fff;border-radius:16px;padding:28px;box-shadow:0 4px 20px rgba(0,0,0,0.08);border-top:4px solid #10b981;">
         <div style="font-size:28px;margin-bottom:12px;">🚀</div>
         <p style="font-size:11px;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Tu proyección 2030</p>
         <h3 style="color:#0f2d4a;font-size:20px;font-weight:800;margin-bottom:8px;">Alta empleabilidad</h3>
@@ -534,7 +937,7 @@
     <h2 class="text-2xl sm:text-3xl font-extrabold text-center mb-3" style="color:#1B3A5C;">Lo que dicen los primeros evaluados</h2>
     <p class="text-center text-gray-500 mb-10">Resultados reales de estudiantes y familias que ya tomaron la decisión.</p>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <div class="bg-white rounded-2xl p-6 card-shadow card-hover">
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover animate-on-scroll animate-delay-1">
         <div class="testimonial-stars text-lg mb-3">★★★★★</div>
         <p class="text-sm text-gray-600 italic mb-4">"Toda mi vida creí que quería Administración porque 'daba dinero'. La evaluación mostró que mi perfil dominante es social-investigador. Hoy estoy en primer semestre de Psicología Organizacional en la Ibero y por primera vez estoy emocionada con lo que estudio."</p>
         <div class="flex items-center gap-3">
@@ -542,7 +945,7 @@
           <div><p class="font-bold text-sm" style="color:#1B3A5C;">Sofía V., 17 años</p><p class="text-xs text-gray-400">Prepa Anáhuac · CDMX · Ingresó a la Iberoamericana</p></div>
         </div>
       </div>
-      <div class="bg-white rounded-2xl p-6 card-shadow card-hover">
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover animate-on-scroll animate-delay-2">
         <div class="testimonial-stars text-lg mb-3">★★★★★</div>
         <p class="text-sm text-gray-600 italic mb-4">"Mi hijo quería estudiar Diseño y yo pensaba que era mala idea. El reporte mostró que tiene perfil creativo-técnico alto. Ahora estudia Diseño Industrial en la UNAM con promedio 9.2. La evaluación nos ahorró un conflicto familiar enorme."</p>
         <div class="flex items-center gap-3">
@@ -550,7 +953,7 @@
           <div><p class="font-bold text-sm" style="color:#1B3A5C;">Roberto G.</p><p class="text-xs text-gray-400">Padre de familia · Tlalpan, CDMX</p></div>
         </div>
       </div>
-      <div class="bg-white rounded-2xl p-6 card-shadow card-hover">
+      <div class="bg-white rounded-2xl p-6 card-shadow card-hover animate-on-scroll animate-delay-3">
         <div class="testimonial-stars text-lg mb-3">★★★★★</div>
         <p class="text-sm text-gray-600 italic mb-4">"Iba en segundo de Derecho y sentía que algo no cuadraba. El test identificó que mi motivador es el liderazgo estratégico, no el litigio. Cambié a Derecho Corporativo y ya tengo práctica en un despacho de fusiones. El dinero mejor invertido del año."</p>
         <div class="flex items-center gap-3">
@@ -633,7 +1036,7 @@
   </div>
 </section>
 
-<section style="background:linear-gradient(135deg,#0f2d4a 0%,#1a4a6b 100%);padding:64px 24px;text-align:center;">
+<section class="animate-on-scroll" style="background:linear-gradient(135deg,#0f2d4a 0%,#1a4a6b 100%);padding:64px 24px;text-align:center;">
   <div style="max-width:720px;margin:0 auto;">
     <p style="color:#f0c040;font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;">LA REALIDAD QUE NADIE DICE</p>
     <h2 style="color:#ffffff;font-size:32px;font-weight:800;line-height:1.3;margin-bottom:32px;">En México, elegir carrera sin información tiene un costo real.</h2>
@@ -668,7 +1071,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
 
       <!-- Individual -->
-      <div class="price-card p-7">
+      <div class="price-card p-7 animate-on-scroll animate-delay-1">
         <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#2E86C1;">Paquete Individual</p>
         <p class="text-4xl font-black mb-1" style="color:#1B3A5C;">$4,499</p>
         <p class="text-sm text-gray-400 mb-1">MXN · pago único</p>
@@ -699,7 +1102,7 @@
       </div>
 
       <!-- Familiar -->
-      <div class="price-card featured p-7 relative">
+      <div class="price-card featured p-7 relative animate-on-scroll animate-delay-2">
         <div class="absolute -top-4 left-1/2 -translate-x-1/2">
           <span class="text-xs font-bold px-4 py-1.5 rounded-full text-white shadow" style="background:#D4A846;">⭐ Mejor valor</span>
         </div>
@@ -1023,6 +1426,53 @@
       obs.observe(el);
     });
   }
+</script>
+
+<script>
+// Intersection Observer para animaciones al hacer scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+// Contador animado para números
+function animateCounter(el, target, duration, suffix) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) {
+      el.textContent = suffix === '+' ? '+' + target : target + suffix;
+      clearInterval(timer);
+    } else {
+      el.textContent = suffix === '+' ? '+' + Math.floor(start) : Math.floor(start) + suffix;
+    }
+  }, 16);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.counted) {
+      entry.target.dataset.counted = true;
+      const target = parseInt(entry.target.dataset.target);
+      const suffix = entry.target.dataset.suffix || '';
+      animateCounter(entry.target, target, 2000, suffix);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+// Hover lift willChange optimización
+document.querySelectorAll('.card, .card-glass, .pain-card, .testimonio-card, .precio-card, .price-card').forEach(card => {
+  card.addEventListener('mouseenter', () => card.style.willChange = 'transform');
+  card.addEventListener('mouseleave', () => card.style.willChange = 'auto');
+});
 </script>
 
 </body>
